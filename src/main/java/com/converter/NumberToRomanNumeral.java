@@ -53,7 +53,7 @@ public class NumberToRomanNumeral {
     }
 
     public static void showResult(int printNum, String roman){
-        System.out.println("'"+roman + "' is the Roman numeral for integer numeral : " + printNum );
+        System.out.println("Input - Integer  = " + printNum + ".  Output - Roman numeral = " + roman );
     }
 
 }
