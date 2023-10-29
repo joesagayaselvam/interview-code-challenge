@@ -65,4 +65,18 @@ public class RomanLettersToNumberTest {
 
     }
 
+    @Test
+    public void testNumerals_InvaildRomanCharecters() {
+
+        int conversionNumber = 0;
+        RomanNumeralToNumber romanNumeralToNumber = new RomanNumeralToNumber();
+
+        conversionNumber = romanNumeralToNumber.conversion("ABC");
+        assertEquals(-1, conversionNumber);
+
+        conversionNumber = romanNumeralToNumber.conversion("XYZ");
+        assertEquals(-1, conversionNumber);
+
+    }
+
 }

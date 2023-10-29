@@ -4,14 +4,13 @@ import com.data.RomanNumerals;
 import com.domain.Mappings;
 
 import java.util.List;
-import static com.constants.CommonConstants.UPPER_LIMIT;
-import static com.constants.CommonConstants.GREATER_THAN_THE_UPPER_LIMIT;
-import static com.constants.CommonConstants.ZERO_OR_NEGATIVE;
+
+import static com.constants.CommonConstants.*;
 
 public class NumberToRomanNumeral {
     /**
      *
-     * @param num
+     * @param numeral
      * @return
      *
      * Upper limit is 3000 for this program
@@ -28,32 +27,48 @@ public class NumberToRomanNumeral {
      * The steps are repeated until the numeral is lesser than the least roman value in the dataset
      *
      */
-    public static String conversion(int num)
+    public static String conversion(int numeral)
     {
         RomanNumerals romanNumerals = new RomanNumerals();
         List<Mappings> mappingsList = romanNumerals.getValues();
         StringBuilder roman = new StringBuilder();
-        int printNum = num;
+        String printNum = String.valueOf(numeral);
 
-        if(num > 0 && num <= UPPER_LIMIT) {
-            for (int i = 0; i < mappingsList.size(); i++) {
-                while ( mappingsList.get(i).getNumberal() <= num) {
-                    num = num - mappingsList.get(i).getNumberal();
-                    roman.append( mappingsList.get(i).getRomanNumerals());
+        if(validate(numeral).equalsIgnoreCase(WITHIN_LIMIT) ) {
+            for (Mappings map : mappingsList) {
+                while ( map.getNumberal() <= numeral) {
+                    numeral = numeral - map.getNumberal();
+                    roman.append( map.getRomanNumerals());
                 }
             }
-            showResult(printNum, roman.toString());
-        } else if(num > UPPER_LIMIT){
-            roman.append(GREATER_THAN_THE_UPPER_LIMIT);
-        } else if (num <= 0){
-            roman.append(ZERO_OR_NEGATIVE);
+            showResult(printNum, roman, WITHIN_LIMIT);
+        }else{
+            roman.append(validate(numeral));
+            showResultInvalid(printNum, validate(numeral));
         }
 
         return roman.toString();
     }
 
-    public static void showResult(int printNum, String roman){
-        System.out.println("Input - Integer  = " + printNum + ".  Output - Roman numeral = " + roman );
+    private static String validate(int numeral){
+        String result = "";
+        if(numeral > 0 && numeral <= UPPER_LIMIT) {
+            result = WITHIN_LIMIT;
+        } else if(numeral > UPPER_LIMIT){
+            result = GREATER_THAN_UPPER_LIMIT;
+        } else if (numeral <= 0){
+            result = ZERO_OR_NEGATIVE;
+        }
+
+        return result;
+    }
+
+    public static void showResult(String printNum, StringBuilder roman, String message){
+        System.out.println(INPUT_STRING_INT + printNum + OUTPUT_STRING_INT + roman.toString() + " --> " + message);
+    }
+
+    public static void showResultInvalid(String printNum,  String message){
+        System.out.println(INPUT_STRING_INT + printNum + OUTPUT_STRING_INT + " NULL  --> " + message);
     }
 
 }

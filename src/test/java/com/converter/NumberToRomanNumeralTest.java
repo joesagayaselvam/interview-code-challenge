@@ -2,7 +2,7 @@ package com.converter;
 
 import org.junit.jupiter.api.Test;
 
-import static com.constants.CommonConstants.GREATER_THAN_THE_UPPER_LIMIT;
+import static com.constants.CommonConstants.GREATER_THAN_UPPER_LIMIT;
 import static com.constants.CommonConstants.ZERO_OR_NEGATIVE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,7 +10,7 @@ public class NumberToRomanNumeralTest {
 
     /**
      * This test is to validate the numerals between 1 and 3000 only
-     *
+     * Used few randomly picked numbers for unit testing within the limit
      */
     @Test
     public void testRomanNumerals_BetweenOneAndThreeThousand() {
@@ -53,7 +53,7 @@ public class NumberToRomanNumeralTest {
 
     /**
      * This test is to validate the numerals greater than 3000
-     *
+     * Used few random numbers for unit testing beyond the given limit
      */
     @Test
     public void testRomanNumerals_MoreThanThreeThousand() {
@@ -62,23 +62,24 @@ public class NumberToRomanNumeralTest {
         NumberToRomanNumeral numberToRomanNumeral = new NumberToRomanNumeral();
 
         converedRomanLetter = numberToRomanNumeral.conversion(3001);
-        assertEquals(GREATER_THAN_THE_UPPER_LIMIT, converedRomanLetter);
+        assertEquals(GREATER_THAN_UPPER_LIMIT, converedRomanLetter);
 
         converedRomanLetter = numberToRomanNumeral.conversion(4000);
-        assertEquals(GREATER_THAN_THE_UPPER_LIMIT, converedRomanLetter);
+        assertEquals(GREATER_THAN_UPPER_LIMIT, converedRomanLetter);
 
         converedRomanLetter = numberToRomanNumeral.conversion(5000);
-        assertEquals(GREATER_THAN_THE_UPPER_LIMIT, converedRomanLetter);
+        assertEquals(GREATER_THAN_UPPER_LIMIT, converedRomanLetter);
 
         converedRomanLetter = numberToRomanNumeral.conversion(1354654649);
-        assertEquals(GREATER_THAN_THE_UPPER_LIMIT, converedRomanLetter);
+        assertEquals(GREATER_THAN_UPPER_LIMIT, converedRomanLetter);
     }
 
     /**
      * This test is to validate the numerals Zero or negative numbers
+     * Zero and few negative numbers are used for this testing
      */
     @Test
-    public void testRomanNumerals_NegativeNumbers() {
+    public void testRomanNumerals_ZeroOrNegativeNumbers() {
 
         String converedRomanLetter = "";
         NumberToRomanNumeral numberToRomanNumeral = new NumberToRomanNumeral();
@@ -86,7 +87,7 @@ public class NumberToRomanNumeralTest {
         converedRomanLetter = numberToRomanNumeral.conversion(0);
         assertEquals(ZERO_OR_NEGATIVE, converedRomanLetter);
 
-        converedRomanLetter = numberToRomanNumeral.conversion(-1);
+        converedRomanLetter = numberToRomanNumeral.conversion(-100);
         assertEquals(ZERO_OR_NEGATIVE, converedRomanLetter);
 
         converedRomanLetter = numberToRomanNumeral.conversion(-2999);

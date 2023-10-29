@@ -2,6 +2,8 @@ package com.converter;
 
 import com.data.Numerals;
 
+import static com.constants.CommonConstants.*;
+
 public class RomanNumeralToNumber {
 
     /**
@@ -21,15 +23,23 @@ public class RomanNumeralToNumber {
     public int conversion(String romanNumerals)
     {
         int numberValue = 0;
-        Numerals  numerals = new Numerals();
+        Numerals numerals = new Numerals();
+        boolean result;
 
-        for (int i = 0; i < romanNumerals.length(); i++) {
-            // Finding value of symbol romanNumerals[i]
-            int currentSymbolValue = numerals.getNumberValue(romanNumerals.charAt(i));
+        for (int inc = 0; inc < romanNumerals.length(); inc++) {
+            // validating each Roman numeral.
+            if (isValidate(romanNumerals.charAt(inc)) == false ){
+                numberValue = 0;
+                showResult(numberValue, romanNumerals, INVALID_ROMAN_NUMERAL);
+                return -1;
+            }
 
-            // Finding value of symbol romanNumerals[i+1]
-            if (i + 1 < romanNumerals.length()) {
-                int nextSymbolValue = numerals.getNumberValue(romanNumerals.charAt(i + 1));
+            // Finding value of symbol romanNumerals[inc]
+            int currentSymbolValue = numerals.getNumberValue(romanNumerals.charAt(inc));
+
+            // Finding value of symbol romanNumerals[inc + 1]
+            if (inc + 1 < romanNumerals.length()) {
+                int nextSymbolValue = numerals.getNumberValue(romanNumerals.charAt(inc + 1));
 
                 // Current symbol Value and next Symbol value comparison
                 if (currentSymbolValue >= nextSymbolValue) {
@@ -39,7 +49,7 @@ public class RomanNumeralToNumber {
                 else {
                     // Value of current symbol is less than the next symbol
                     numberValue = numberValue + nextSymbolValue - currentSymbolValue;
-                    i++;
+                    inc++;
                 }
             }
             else {
@@ -47,16 +57,30 @@ public class RomanNumeralToNumber {
             }
         }
 
-        if(numberValue > 3000 )
+        if(numberValue > UPPER_LIMIT ) {
             numberValue = 0;
+            showResult(numberValue, romanNumerals, GREATER_THAN_UPPER_LIMIT);
+        }
         else
-            showResult(numberValue, romanNumerals);
+            showResult(numberValue, romanNumerals, WITHIN_LIMIT);
 
         return numberValue;
     }
 
-    public static void showResult(int printNum, String roman){
-        System.out.println("Input - Roman numeral = " + roman + ".  Output - Integer  = " + printNum );
+    private boolean isValidate(char romanNumeral){
+        boolean result = false;
+        Numerals numerals = new Numerals();
+        int currentSymbolValue = numerals.getNumberValue(romanNumeral);
+
+        if (currentSymbolValue != -1){
+            result = true;
+        }
+
+        return result;
+    }
+
+    public static void showResult(int printNum, String roman, String message){
+        System.out.println(INPUT_STRING_ROMAN + roman  + OUTPUT_STRING_ROMAN + printNum + " --> " +message);
     }
 
 }
