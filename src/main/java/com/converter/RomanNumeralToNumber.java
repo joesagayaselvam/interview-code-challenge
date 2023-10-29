@@ -9,9 +9,9 @@ public class RomanNumeralToNumber {
      * @param romanNumerals
      * @return convertedNumber
      *
-     * Getting value of symbol s[i]
-     * Getting value of symbol s[i+1]
-     * Comparing both values
+     * Finding value of symbol romanNumerals[i]
+     * Finding value of symbol romanNumerals[i]+1]
+     * Current symbol Value and next Symbol value comparison
      * In case of Value of current symbol is greater or equal to the next symbol
      * Add the current symbol value
      * In case of Value of current symbol is less than the next symbol
@@ -20,19 +20,18 @@ public class RomanNumeralToNumber {
      */
     public int conversion(String romanNumerals)
     {
-        // Initialize result
         int numberValue = 0;
         Numerals  numerals = new Numerals();
 
         for (int i = 0; i < romanNumerals.length(); i++) {
-            // Getting value of symbol s[i]
+            // Finding value of symbol romanNumerals[i]
             int currentSymbolValue = numerals.getNumberValue(romanNumerals.charAt(i));
 
-            // Getting value of symbol s[i+1]
+            // Finding value of symbol romanNumerals[i+1]
             if (i + 1 < romanNumerals.length()) {
                 int nextSymbolValue = numerals.getNumberValue(romanNumerals.charAt(i + 1));
 
-                // Comparing both values
+                // Current symbol Value and next Symbol value comparison
                 if (currentSymbolValue >= nextSymbolValue) {
                     // Value of current symbol is greater or equal to the next symbol
                     numberValue = numberValue + currentSymbolValue;
