@@ -2,21 +2,19 @@ package com.domain;
 
 public class Mappings {
 
-    private int numberal;
+    private int numeral;
     private String romanNumerals;
 
     public Mappings(int numberal, String romanNumerals) {
-        this.numberal = numberal;
+        this.numeral = numberal;
         this.romanNumerals = romanNumerals;
     }
-
-
-    public int getNumberal() {
-        return numberal;
+    public int getNumeral() {
+        return numeral;
     }
 
-    public void setNumberal(int numberal) {
-        this.numberal = numberal;
+    public void setNumeral(int numeral) {
+        this.numeral = numeral;
     }
 
     public String getRomanNumerals() {
@@ -30,7 +28,7 @@ public class Mappings {
     @Override
     public String toString() {
         return "Mappings{" +
-                "numberal=" + numberal +
+                "numberal=" + numeral +
                 ", romanNumerals='" + romanNumerals + '\'' +
                 '}';
     }

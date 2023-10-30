@@ -11,14 +11,18 @@ public class RomanNumeralToNumber {
      * @param romanNumerals
      * @return convertedNumber
      *
-     * Finding value of symbol romanNumerals[i]
-     * Finding value of symbol romanNumerals[i]+1]
-     * Current symbol Value and next Symbol value comparison
-     * In case of Value of current symbol is greater or equal to the next symbol
-     * Add the current symbol value
-     * In case of Value of current symbol is less than the next symbol
-     * Subtract the current symbol value from the number value
-     *
+     * Validate the roman numbers of the input.
+     * Return -1, if char of the roman numeral is invalid.
+     * Prints the message.
+     * Find the integer value for the roman, if char of the roman numeral.
+     * Finding value of Roman numeral romanNumerals[inc]
+     * Finding value of Roman numeral romanNumerals[inc]+1]
+     * Current Roman numeral Value and next Roman numeral value comparison
+     * In case of Value of current Roman numeral is greater or equal to the next Roman numeral - Eg: 1xs / 5xs
+     * Add the current Roman numeral value
+     * In case of Value of current Roman numeral is less than the next Roman numeral - Eg: 1xs value is prefix to 4xs / 9xs
+     * Subtract the current Roman numeral value from the number value
+     * Prints the message.
      */
     public int conversion(String romanNumerals)
     {
@@ -34,20 +38,20 @@ public class RomanNumeralToNumber {
                 return -1;
             }
 
-            // Finding value of symbol romanNumerals[inc]
+            // Finding value of Roman numeral romanNumerals[inc]
             int currentSymbolValue = numerals.getNumberValue(romanNumerals.charAt(inc));
 
-            // Finding value of symbol romanNumerals[inc + 1]
+            // Finding value of Roman numeral romanNumerals[inc + 1]
             if (inc + 1 < romanNumerals.length()) {
                 int nextSymbolValue = numerals.getNumberValue(romanNumerals.charAt(inc + 1));
 
-                // Current symbol Value and next Symbol value comparison
+                // Current Roman numeral Value and next Roman numeral value comparison
                 if (currentSymbolValue >= nextSymbolValue) {
-                    // Value of current symbol is greater or equal to the next symbol
+                    // Value of current Roman numeral is greater or equal to the next Roman numeral - Eg: 1xs / 5xs
                     numberValue = numberValue + currentSymbolValue;
                 }
                 else {
-                    // Value of current symbol is less than the next symbol
+                    // Value of current Roman numeral is less than the next Roman numeral - Eg: 1xs value is prefix to 4xs / 9xs
                     numberValue = numberValue + nextSymbolValue - currentSymbolValue;
                     inc++;
                 }

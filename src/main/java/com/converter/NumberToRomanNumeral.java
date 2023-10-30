@@ -36,8 +36,8 @@ public class NumberToRomanNumeral {
 
         if(validate(numeral).equalsIgnoreCase(WITHIN_LIMIT) ) {
             for (Mappings map : mappingsList) {
-                while ( map.getNumberal() <= numeral) {
-                    numeral = numeral - map.getNumberal();
+                while ( map.getNumeral() <= numeral) {
+                    numeral = numeral - map.getNumeral();
                     roman.append( map.getRomanNumerals());
                 }
             }
