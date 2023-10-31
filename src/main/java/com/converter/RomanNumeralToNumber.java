@@ -71,6 +71,11 @@ public class RomanNumeralToNumber {
         return numberValue;
     }
 
+    /**
+     * Validation of the roman numeral
+     * @param romanNumeral
+     * @return
+     */
     private boolean isValidate(char romanNumeral){
         boolean result = false;
         Numerals numerals = new Numerals();

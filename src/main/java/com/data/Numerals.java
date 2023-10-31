@@ -2,6 +2,12 @@ package com.data;
 
 public class Numerals {
 
+    /**
+     * Find the numeral value for the Roman numeral.
+     *
+     * @param romanChar
+     * @return numeral
+     */
     public int getNumberValue(char romanChar)
     {
         if (romanChar == 'I') return 1;

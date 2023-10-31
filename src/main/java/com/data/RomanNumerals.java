@@ -7,6 +7,10 @@ import java.util.List;
 
 public class RomanNumerals {
 
+    /**
+     * Setting the values in mappingsList ArrayList
+     * @return mappingsList
+     */
     public List<Mappings> getValues(){
 
         ArrayList<Mappings> mappingsList = new ArrayList<Mappings>();
